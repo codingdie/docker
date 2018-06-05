@@ -26,7 +26,7 @@ if [ "$1" = "storage" ];then
     sed -i '/base_path/d' /etc/fdfs/client.conf 
     echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
     echo -e "\base_path=/root/fastdfs/storage/client/\n" >> /etc/fdfs/client.conf 
-
+    /usr/local/nginx/nginx -c /usr/local/nginx/nginx.conf 
 fi
 if [ "$1" = "tracker" ];then   
     echo $1

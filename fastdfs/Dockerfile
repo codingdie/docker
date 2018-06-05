@@ -77,11 +77,14 @@ ADD tracker.conf /etc/fdfs/tracker.conf
 
 ADD storage.conf /etc/fdfs/storage.conf
 
+
 ADD start-fastdfs-node.sh .
 
 RUN chmod +x /root/start-fastdfs-node.sh
 
 ADD groups .
+
+ADD nginx.conf /usr/local/nginx/nginx.conf
 
 ENTRYPOINT /root/start-fastdfs-node.sh ${name}  ${host} ${group}  ${tracker_server}
 
