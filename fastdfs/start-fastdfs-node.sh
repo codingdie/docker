@@ -17,7 +17,7 @@ if [ "$1" = "storage" ];then
     sed -i '/base_path=/d' /etc/fdfs/mod_fastdfs.conf 
     sed -i '/group_count=/d' /etc/fdfs/mod_fastdfs.conf 
 
-    echo -e "\base_path=/root/fastdfs/storage\n" >> /etc/fdfs/mod_fastdfs.conf     
+    echo -e "\nbase_path=/root/fastdfs/storage\n" >> /etc/fdfs/mod_fastdfs.conf     
     echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/mod_fastdfs.conf 
     echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/mod_fastdfs.conf 
 ]
