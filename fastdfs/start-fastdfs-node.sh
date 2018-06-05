@@ -31,6 +31,7 @@ echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf
 echo -e "\nbase_path=/root/fdfs/${1}/client\n" >> /etc/fdfs/client.conf 
 
 mkdir -p /root/fastdfs/${1}
+mkdir -p /root/fastdfs/${1}/client
 
 /usr/bin/fdfs_${1}d /etc/fdfs/${1}.conf 
 
