@@ -32,6 +32,8 @@ if [ "$1" = "tracker" ];then
     echo $1
 fi
 
+
+
 /usr/bin/fdfs_${name}d /etc/fdfs/${name}.conf 
 
 sleep 1

@@ -88,6 +88,12 @@ ADD nginx.conf /usr/local/nginx/nginx.conf
 
 ADD mod_fastdfs.conf  .
 
+WORKDIR /root/FastDFS/conf
+
+RUN cp anti-steal.jpg http.conf mime.types /etc/fdfs
+
+WORKDIR /root
+
 ENTRYPOINT /root/start-fastdfs-node.sh ${name}  
 
 EXPOSE 22122 23000
