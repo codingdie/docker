@@ -7,7 +7,7 @@ if [ "$1" = "storage" ];then
 
     echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/${1}.conf 
     echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/${1}.conf 
-    echo -e "\bind_addr=${host}\n" >> /etc/fdfs/${1}.conf 
+    echo -e "\nbind_addr=${host}\n" >> /etc/fdfs/${1}.conf 
 
     rm  /etc/fdfs/mod_fastdfs.conf
     cp  fastdfs-nginx-module/src/mod_fastdfs.conf      /etc/fdfs/
@@ -28,7 +28,7 @@ fi
 sed -i '/tracker_server/d' /etc/fdfs/client.conf 
 sed -i '/base_path=/d' /etc/fdfs/client.conf 
 echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
-echo -e "\base_path=/root/fdfs/${1}/client\n" >> /etc/fdfs/client.conf 
+echo -e "\nbase_path=/root/fdfs/${1}/client\n" >> /etc/fdfs/client.conf 
 
 mkdir -p /root/fastdfs/${1}
 
