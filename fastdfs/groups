@@ -1,0 +1,7 @@
+group_count=1
+[group1]
+group_name=group1
+storage_server_port=23000
+store_path_count=1
+store_path0=/root/fastdfs/storage
+
