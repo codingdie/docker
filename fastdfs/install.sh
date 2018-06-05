@@ -7,7 +7,7 @@ if [ "$1" = "tracker" ];then
     docker stop ${name}
     docker rm ${name}
     mkdir -p $3
-    docker run --net=host --name ${name}  -d -e name=$1 -v $3:/root/fastdfs   fastdfs:1.0
+    docker run --net=host --name ${name}  -d -e name=$1 -e port=$2 -v $3:/root/fastdfs   fastdfs:1.0
 fi
 
 
@@ -16,5 +16,5 @@ if [ "$1" = "storage" ];then
     docker stop ${name}
     docker rm ${name}
     mkdir -p $3  $6/$1_$4
-    docker run --net=host --name ${name}  -d -e name=$1 -e host=$2 -e  group=$4 -e tracker_server=$5   -v $6/$1_$4:/root/fastdfs/storage   fastdfs:1.0
+    docker run --net=host --name ${name}  -d -e name=$1 -e host=$2 -e port=$3 -e  group=$4 -e tracker_server=$5   -v $6/$1_$4:/root/fastdfs/storage   fastdfs:1.0
 fi

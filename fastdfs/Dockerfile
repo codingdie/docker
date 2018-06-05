@@ -88,6 +88,6 @@ ADD nginx.conf /usr/local/nginx/nginx.conf
 
 ADD mod_fastdfs.conf  .
 
-ENTRYPOINT /root/start-fastdfs-node.sh ${name}  ${host} ${group}  ${tracker_server}
+ENTRYPOINT /root/start-fastdfs-node.sh ${name}  
 
 EXPOSE 22122 23000

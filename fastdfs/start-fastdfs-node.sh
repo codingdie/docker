@@ -1,14 +1,16 @@
 cd /root 
-mkdir -p /root/fastdfs/${1}
-mkdir -p /root/fastdfs/${1}/client
+mkdir -p /root/fastdfs/${name}
+mkdir -p /root/fastdfs/${name}/client
 if [ "$1" = "storage" ];then 
-    sed -i '/tracker_server/d' /etc/fdfs/${1}.conf 
-    sed -i '/group_name=/d' /etc/fdfs/${1}.conf 
-    sed -i '/bind_addr=/d' /etc/fdfs/${1}.conf 
+    sed -i '/tracker_server/d' /etc/fdfs/${name}.conf 
+    sed -i '/group_name=/d' /etc/fdfs/${name}.conf 
+    sed -i '/bind_addr=/d' /etc/fdfs/${name}.conf 
+    sed -i '/http.server_port=/d' /etc/fdfs/${name}.conf 
 
-    echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/${1}.conf 
-    echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/${1}.conf 
-    echo -e "\nbind_addr=${host}\n" >> /etc/fdfs/${1}.conf 
+    echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/${name}.conf 
+    echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/${name}.conf 
+    echo -e "\nbind_addr=${host}\n" >> /etc/fdfs/${name}.conf 
+    echo -e "\nhttp.server_port=${port}\n" >> /etc/fdfs/${name}.conf 
 
     rm  /etc/fdfs/mod_fastdfs.conf
     cp  /root/mod_fastdfs.conf      /etc/fdfs/
@@ -30,8 +32,8 @@ if [ "$1" = "tracker" ];then
     echo $1
 fi
 
-/usr/bin/fdfs_${1}d /etc/fdfs/${1}.conf 
+/usr/bin/fdfs_${name}d /etc/fdfs/${name}.conf 
 
 sleep 1
 
-tail -f /root/fastdfs/${1}/logs/${1}d.log 
+tail -f /root/fastdfs/${name}/logs/${name}d.log 
