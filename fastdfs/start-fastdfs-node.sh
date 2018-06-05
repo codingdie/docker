@@ -3,9 +3,11 @@ mkdir -p /root/fastdfs/${1}/client
 if [ "$1" = "storage" ];then 
     sed -i '/tracker_server/d' /etc/fdfs/${1}.conf 
     sed -i '/group_name=/d' /etc/fdfs/${1}.conf 
-    
+    sed -i '/bind_addr=/d' /etc/fdfs/${1}.conf 
+
     echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/${1}.conf 
     echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/${1}.conf 
+    echo -e "\bind_addr=${host}\n" >> /etc/fdfs/${1}.conf 
 
     rm  /etc/fdfs/mod_fastdfs.conf
     cp  fastdfs-nginx-module/src/mod_fastdfs.conf      /etc/fdfs/
