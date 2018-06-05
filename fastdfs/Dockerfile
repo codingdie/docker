@@ -90,9 +90,11 @@ ADD mod_fastdfs.conf  .
 
 WORKDIR /root/FastDFS/conf
 
-RUN cp anti-steal.jpg http.conf mime.types /etc/fdfs
+RUN cp anti-steal.jpg  mime.types /etc/fdfs
 
 WORKDIR /root
+
+ADD http.conf  /etc/fdfs
 
 ENTRYPOINT /root/start-fastdfs-node.sh ${name}  
 
