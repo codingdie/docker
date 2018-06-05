@@ -26,12 +26,10 @@ if [ "$1" = "tracker" ];then
 fi
 
 sed -i '/tracker_server/d' /etc/fdfs/client.conf 
-sed -i '/base_path=/d' /etc/fdfs/client.conf 
 echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
-echo -e "\nbase_path=/root/fdfs/${1}/client\n" >> /etc/fdfs/client.conf 
 
 mkdir -p /root/fastdfs/${1}
-mkdir -p /root/fastdfs/${1}/client
+mkdir -p /root/fastdfs/client
 
 /usr/bin/fdfs_${1}d /etc/fdfs/${1}.conf 
 
