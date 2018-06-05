@@ -19,10 +19,9 @@ RUN cd libevent-2.0.22-stable && ./configure -h && ./configure --prefix=/usr && 
 RUN git clone https://github.com/happyfish100/libfastcommon.git 
 
 RUN cd libfastcommon &&  chmod +x make.sh &&  ./make.sh &&  ./make.sh install
+RUN git clone  https://github.com/happyfish100/fastdfs.git
 
-RUN wget https://jaist.dl.sourceforge.net/project/fastdfs/FastDFS%20Server%20Source%20Code/FastDFS%20Server%20with%20PHP%20Extension%20Source%20Code%20V5.08/FastDFS_v5.08.tar.gz && tar zxvf FastDFS_v5.08.tar.gz
-
-RUN cd FastDFS &&  ./make.sh &&  ./make.sh install
+RUN  mv  fastdfs FastDFS && cd FastDFS &&  ./make.sh &&  ./make.sh install
 
 RUN yum -y install net-tools
 
