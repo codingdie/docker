@@ -20,18 +20,24 @@ if [ "$1" = "storage" ];then
     echo -e "\nbase_path=/root/fastdfs/storage\n" >> /etc/fdfs/mod_fastdfs.conf     
     echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/mod_fastdfs.conf 
     echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/mod_fastdfs.conf 
-]
     cat groups >> /etc/fdfs/mod_fastdfs.conf 
     cat /etc/fdfs/mod_fastdfs.conf 
+
+
+    sed -i '/tracker_server/d' /etc/fdfs/client.conf 
+    sed -i '/base_path/d' /etc/fdfs/client.conf 
+
+    
+    echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
+    echo -e "\base_path=/root/fastdfs/storage/client/\n" >> /etc/fdfs/client.conf 
+    
+    mkdir -p /root/fastdfs/storage/client
 
    
 fi
 if [ "$1" = "tracker" ];then   
     echo $1
 fi
-
-sed -i '/tracker_server/d' /etc/fdfs/client.conf 
-echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
 
 mkdir -p /root/fastdfs/${1}
 mkdir -p /root/fastdfs/client
