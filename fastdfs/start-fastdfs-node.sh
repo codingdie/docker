@@ -35,11 +35,11 @@ if [ "$1" = "storage" ];then
     sed -i "s/replace_port/${http}/g" /usr/local/nginx/nginx.conf
     /usr/local/nginx/nginx -c /usr/local/nginx/nginx.conf 
 
-    echo -e "\ntracker_server=127.0.0.1:22122\n" >> /etc/fdfs/client.conf 
+    echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
 
 fi
 if [ "$1" = "tracker" ];then   
-    echo -e "\ntracker_server=127\n" >> /etc/fdfs/client.conf 
+    echo -e "\ntracker_server=127.0.0.1:22122\n" >> /etc/fdfs/client.conf 
 fi
 
 
