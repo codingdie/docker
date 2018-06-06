@@ -10,7 +10,7 @@ if [ "$1" = "storage" ];then
     echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/${name}.conf 
     echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/${name}.conf 
     echo -e "\nbind_addr=${host}\n" >> /etc/fdfs/${name}.conf 
-    echo -e "\nhttp.server_port=${port}\n" >> /etc/fdfs/${name}.conf 
+    echo -e "\nhttp.server_port=${http}\n" >> /etc/fdfs/${name}.conf 
 
     rm  /etc/fdfs/mod_fastdfs.conf
     cp  /root/mod_fastdfs.conf      /etc/fdfs/
