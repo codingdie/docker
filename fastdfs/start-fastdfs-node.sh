@@ -24,8 +24,12 @@ if [ "$1" = "storage" ];then
     cp  /root/mod_fastdfs.conf      /etc/fdfs/
     sed -i '/tracker_server/d' /etc/fdfs/mod_fastdfs.conf 
     sed -i '/group_name=/d' /etc/fdfs/mod_fastdfs.conf 
+    sed -i '/storage_server_port=/d' /etc/fdfs/mod_fastdfs.conf 
+
     echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/mod_fastdfs.conf 
     echo -e "\ngroup_name=${group}\n" >> /etc/fdfs/mod_fastdfs.conf 
+    echo -e "\nstorage_server_port=${port}\n" >> /etc/fdfs/mod_fastdfs.conf 
+
     cat groups >> /etc/fdfs/mod_fastdfs.conf 
     cat /etc/fdfs/mod_fastdfs.conf 
 
