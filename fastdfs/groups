@@ -8,6 +8,6 @@ store_path0=/root/fastdfs/storage
 
 [group2]
 group_name=group2
-storage_server_port=23001
+storage_server_port=23000
 store_path_count=1
 store_path0=/root/fastdfs/storage
