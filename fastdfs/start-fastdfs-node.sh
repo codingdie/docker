@@ -1,6 +1,12 @@
 cd /root 
 mkdir -p /root/fastdfs/${name}
 mkdir -p /root/fastdfs/${name}/client
+
+sed -i '/tracker_server/d' /etc/fdfs/client.conf 
+sed -i '/base_path/d' /etc/fdfs/client.conf 
+echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
+echo -e "\base_path=/root/fastdfs/${name}/client/\n" >> /etc/fdfs/client.conf 
+
 if [ "$1" = "storage" ];then 
     sed -i '/tracker_server/d' /etc/fdfs/${name}.conf 
     sed -i '/group_name=/d' /etc/fdfs/${name}.conf 
@@ -24,11 +30,6 @@ if [ "$1" = "storage" ];then
     cat /etc/fdfs/mod_fastdfs.conf 
 
     sed -i "s/replace_port/${http}/g" /usr/local/nginx/nginx.conf
-
-    sed -i '/tracker_server/d' /etc/fdfs/client.conf 
-    sed -i '/base_path/d' /etc/fdfs/client.conf 
-    echo -e "\ntracker_server=${tracker_server}\n" >> /etc/fdfs/client.conf 
-    echo -e "\base_path=/root/fastdfs/storage/client/\n" >> /etc/fdfs/client.conf 
     /usr/local/nginx/nginx -c /usr/local/nginx/nginx.conf 
 fi
 if [ "$1" = "tracker" ];then   
