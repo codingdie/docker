@@ -12,7 +12,7 @@ fi
 
 
 if [ "$1" = "storage" ];then   
-
+    docker build -t fastdfs:1.0  . 
     name=${1}-${3}
     docker stop ${name}
     docker rm ${name}
