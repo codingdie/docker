@@ -21,6 +21,7 @@ if [ "$1" = "storage" ];then
     cat groups >> /etc/fdfs/mod_fastdfs.conf 
     cat /etc/fdfs/mod_fastdfs.conf 
 
+    sed -i "s/replace_port/${http}/g" /usr/local/nginx/nginx.conf
 
     sed -i '/tracker_server/d' /etc/fdfs/client.conf 
     sed -i '/base_path/d' /etc/fdfs/client.conf 
