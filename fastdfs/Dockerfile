@@ -84,7 +84,7 @@ RUN chmod +x /root/start-fastdfs-node.sh
 
 ADD groups .
 
-ADD nginx.conf /usr/local/nginx/nginx.conf
+ADD storage_nginx.conf /usr/local/nginx/nginx.conf
 
 ADD mod_fastdfs.conf  .
 
