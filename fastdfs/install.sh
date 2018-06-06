@@ -40,5 +40,5 @@ if [ "$1" = "nginx" ];then
     docker stop fdfs-nginx 
     docker rm fdfs-nginx 
     
-    docker run --name fdfs-nginx   -p ${2}:80 -v `pwd`/proxy_nginx.conf:/etc/nginx/nginx.conf -d nginx
+    docker run --net=host --name fdfs-nginx   -p ${2}:80 -v `pwd`/proxy_nginx.conf:/etc/nginx/nginx.conf -d nginx
 fi
