@@ -23,7 +23,7 @@ fi
 if [ "$1" = "nginx" ];then   
     rm proxy_nginx.conf
     cp proxy_nginx.conf.default proxy_nginx.conf
-    i=2
+    i=3
     upstream=''
     location=''
     while [ $i -le $# ];do
@@ -40,5 +40,5 @@ if [ "$1" = "nginx" ];then
     docker stop fdfs-nginx 
     docker rm fdfs-nginx 
     
-    docker run --name fdfs-nginx -v `pwd`/proxy_nginx.conf:/etc/nginx/nginx.conf -d nginx
+    docker run --name fdfs-nginx   -p ${2}:80 -v `pwd`/proxy_nginx.conf:/etc/nginx/nginx.conf -d nginx
 fi

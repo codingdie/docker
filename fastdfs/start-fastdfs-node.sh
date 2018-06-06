@@ -4,7 +4,7 @@ mkdir -p /root/fastdfs/${name}/client
 
 sed -i '/tracker_server/d' /etc/fdfs/client.conf 
 sed -i '/base_path/d' /etc/fdfs/client.conf 
-echo -e "\base_path=/root/fastdfs/${name}/client/\n" >> /etc/fdfs/client.conf 
+echo -e "\nbase_path=/root/fastdfs/${name}/client/\n" >> /etc/fdfs/client.conf 
 
 if [ "$1" = "storage" ];then 
     sed -i '/tracker_server/d' /etc/fdfs/${name}.conf 
